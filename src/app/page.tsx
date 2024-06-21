@@ -24,7 +24,7 @@ const Home = () => {
     signIn("spotify", {
       callbackUrl:
         environment == "production"
-          ? "https://whowho.app/discovery"
+          ? "https://www.whowho.app/discovery"
           : "http://localhost:3000/discovery",
     });
   };
