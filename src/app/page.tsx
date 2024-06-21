@@ -10,6 +10,7 @@ import React from "react";
 import Image from "next/image";
 
 const Home = () => {
+  const environment = process.env.NODE_ENV;
   const [user, setUser] = React.useState<User>();
 
   const handleVerifyLogin = async () => {
@@ -20,7 +21,12 @@ const Home = () => {
   console.log(user);
 
   const handleLogin = () => {
-    signIn("spotify", { callbackUrl: "http://localhost:3000/discovery" });
+    signIn("spotify", {
+      callbackUrl:
+        environment == "production"
+          ? "https://whowho.app/discovery"
+          : "http://localhost:3000/discovery",
+    });
   };
 
   React.useEffect(() => {
