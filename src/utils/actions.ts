@@ -5,7 +5,7 @@ export const getNewReleases = async (
   session: AuthSession
 ): Promise<Album[]> => {
   return customGet(
-    "https://api.spotify.com/v1/search?limit=30&q=tag%3Anew&type=album&market=US",
+    "https://api.spotify.com/v1/search?limit=12&q=tag%3Anew&type=album&market=US",
     session
   ).then((data) => data.albums.items);
 };
@@ -19,9 +19,15 @@ export const getRandomAlbum = async (
   ).then((data) => data.albums.items);
 };
 
-export const getAlbumTracks = async (session: AuthSession, albumId: string) => {
+export const getAlbumDetails = async (
+  session: AuthSession,
+  albumId: string
+) => {
   return customGet(
     `https://api.spotify.com/v1/albums/${albumId}`,
     session
-  ).then((data) => data);
+  ).then((data) => {
+    console.log("album data: ", data);
+    return data;
+  });
 };

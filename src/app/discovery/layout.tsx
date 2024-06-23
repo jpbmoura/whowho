@@ -1,9 +1,8 @@
-import darkSide from "@/assets/images/dark_side.png";
 import AlbumCard from "@/components/album-card";
 import { NextAuthProvider } from "@/providers/next-auth-provider";
 import { getNewReleases } from "@/utils/actions";
 import { getAuthSession } from "@/utils/server-utils";
-import { auth, currentUser } from "@clerk/nextjs/server";
+import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import React from "react";
 

@@ -33,9 +33,24 @@ export interface Album {
   images: Image[];
   album_type?: string;
   release_date: string;
+  external_urls: {
+    spotify: string;
+  };
   tracks: {
     total: number;
     items: Track[];
+  };
+  copyrights?: [
+    {
+      text: string;
+      type: string;
+    }
+  ];
+  genres?: string[];
+  label?: string;
+  popularity?: number;
+  restrictions?: {
+    reason: string;
   };
 }
 
@@ -56,6 +71,7 @@ export interface Track {
   artists: Artist[];
   duration_ms: number;
   preview_url: string;
+  explicit: boolean;
 }
 
 export interface Playlist {

@@ -19,7 +19,6 @@ export const customGet = async (url: string, session: AuthSession | null) => {
 
 export const getAuthSession = async () => {
   const session = (await getServerSession(authOptions)) as AuthSession;
-  console.log("Session", session);
   if (!session) {
     return null;
   }

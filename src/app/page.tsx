@@ -18,8 +18,6 @@ const Home = () => {
     setUser(user.user);
   };
 
-  console.log(user);
-
   const handleLogin = () => {
     signIn("spotify", {
       callbackUrl:
@@ -37,7 +35,9 @@ const Home = () => {
     <main className="flex min-h-screen max-w-5xl m-auto flex-col px-10 py-16">
       <section className="flex flex-col items-center space-y-6">
         <span className="text-2xl font-thin">
-          Welcome to WhoWho, a music discovery platform.
+          Welcome to WhoWho.
+          <span className="underline font-normal">Discover new music</span> with
+          Spotify.
         </span>
 
         {!user ? (
