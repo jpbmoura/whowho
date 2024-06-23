@@ -5,7 +5,7 @@ export const getNewReleases = async (
   session: AuthSession
 ): Promise<Album[]> => {
   return customGet(
-    "https://api.spotify.com/v1/search?limit=12&q=tag%3Anew&type=album&market=US",
+    "https://api.spotify.com/v1/search?limit=24&q=tag%3Anew&type=album&market=US",
     session
   ).then((data) => data.albums.items);
 };
