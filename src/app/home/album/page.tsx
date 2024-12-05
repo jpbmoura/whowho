@@ -28,20 +28,22 @@ const Album = () => {
           rel="noopener noreferrer"
           className="font-bold text-2xl underline hover:text-indigo-700 transition-colors gap-1 flex flex-row items-start"
         >
-          <span>1001 Albums You Must Hear Before You Die</span>
+          <span className="text-center">
+            1001 Albums You Must Hear Before You Die
+          </span>
 
-          <LiaExternalLinkAltSolid className="size-4" />
+          <LiaExternalLinkAltSolid className="size-4 md:block hidden" />
         </a>
         <h2 className="text-xl font-light ">Today&apos;s Album</h2>
         <AiOutlineCaretDown className="m-0 p-0 animate-bounce" />
       </div>
 
-      <div className="flex m-auto flex-col items-center gap-4 max-w-2xl border border-black py-4 px-6 shadow-blocked dark:border-zinc-800 bg-white">
-        <h3 className="font-bold text-xl">
+      <div className="flex m-auto flex-col items-center gap-4 max-w-2xl border border-black py-4 px-6 shadow-blocked dark:border-zinc-800 bg-white mb-12">
+        <h3 className="font-bold text-xl text-center">
           {albumOfTheDayMock.artist} - {albumOfTheDayMock.title}
         </h3>
-        <div className="flex flex-row gap-8">
-          <div className="space-y-4 w-1/2">
+        <div className="flex md:flex-row flex-col gap-8">
+          <div className="space-y-4 w-1/2 m-auto md:m-0">
             <Image
               src={albumOfTheDayMock.albumCover}
               alt={albumOfTheDayMock.title}
