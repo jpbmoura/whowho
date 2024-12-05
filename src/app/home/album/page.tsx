@@ -1,8 +1,13 @@
+"use client";
+
 import Image from "next/image";
 
 import mockImage from "@/assets/images/mock/bobdylan.png";
 import { LiaExternalLinkAltSolid } from "react-icons/lia";
 import { AiOutlineCaretDown } from "react-icons/ai";
+import YoutubeIframe from "@/components/ui/youtube-iframe";
+import { usePlayerStore } from "@/store/usePlayerStore";
+import { useEffect } from "react";
 
 const albumOfTheDayMock = {
   title: "The Freewheelin' Bob Dylan",
@@ -19,6 +24,29 @@ const albumOfTheDayMock = {
 };
 
 const Album = () => {
+  const { setVideoId, videoId } = usePlayerStore();
+
+  const searchAlbum = async (albumName: string) => {
+    try {
+      const response = await fetch(
+        `/api/youtube-search?query=${encodeURIComponent(albumName)}`
+      );
+      if (!response.ok) {
+        throw new Error(`Failed to fetch video: ${response.statusText}`);
+      }
+      const data = await response.json();
+      setVideoId(data.videoId);
+    } catch (error) {
+      console.error("Error fetching video:", error);
+    }
+  };
+
+  useEffect(() => {
+    searchAlbum(`${albumOfTheDayMock.title}+${albumOfTheDayMock.artist}`);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [videoId]);
+
   return (
     <div className="flex flex-col w-full items-center justify-center">
       <div className="pb-8 flex flex-col justify-center items-center gap-2">
@@ -95,6 +123,7 @@ const Album = () => {
           </div>
         </div>
       </div>
+      <YoutubeIframe />
     </div>
   );
 };

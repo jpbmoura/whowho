@@ -20,7 +20,7 @@ const HomeLayout = ({ children }: HomeLayoutProps) => {
         {children}
       </div>
 
-      <footer className="flex justify-center items-center h-16">
+      <footer className="flex justify-center items-center h-16 mt-16 pb-4">
         <p className="text-center">
           Built with{" "}
           <span role="img" aria-label="heart">
