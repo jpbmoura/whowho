@@ -7,14 +7,16 @@ const itemsMock = [
     title: "Album 1",
     artist: "Artist 1",
     image: "https://picsum.photos/seed/1/200/200",
-    has_listened: false,
+    has_listened: true,
+    has_liked: true,
   },
   {
     id: 2,
     title: "Album 2",
     artist: "Artist 2",
     image: "https://picsum.photos/seed/2/200/200",
-    has_listened: false,
+    has_listened: true,
+    has_liked: false,
   },
   {
     id: 3,
@@ -28,7 +30,8 @@ const itemsMock = [
     title: "Album 4",
     artist: "Artist 4",
     image: "https://picsum.photos/seed/4/200/200",
-    has_listened: false,
+    has_listened: true,
+    has_liked: true,
   },
   {
     id: 5,
@@ -64,27 +67,31 @@ const itemsMock = [
     artist: "Artist 9",
     image: "https://picsum.photos/seed/9/200/200",
     has_listened: true,
+    has_liked: false,
   },
   {
     id: 10,
     title: "Album 10",
     artist: "Artist 10",
     image: "https://picsum.photos/seed/10/200/200",
-    has_listened: false,
+    has_listened: true,
+    has_liked: false,
   },
   {
     id: 11,
     title: "Album 11",
     artist: "Artist 11",
     image: "https://picsum.photos/seed/11/200/200",
-    has_listened: false,
+    has_listened: true,
+    has_liked: false,
   },
   {
     id: 12,
     title: "Album 12",
     artist: "Artist 12",
     image: "https://picsum.photos/seed/12/200/200",
-    has_listened: false,
+    has_listened: true,
+    has_liked: false,
   },
   {
     id: 13,
@@ -92,6 +99,7 @@ const itemsMock = [
     artist: "Artist 13",
     image: "https://picsum.photos/seed/13/200/200",
     has_listened: true,
+    has_liked: false,
   },
   {
     id: 14,
@@ -182,14 +190,14 @@ const itemsMock = [
     title: "Album 26",
     artist: "Artist 26",
     image: "https://picsum.photos/seed/26/200/200",
-    has_listened: true,
+    has_listened: false,
   },
   {
     id: 27,
     title: "Album 27",
     artist: "Artist 27",
     image: "https://picsum.photos/seed/27/200/200",
-    has_listened: true,
+    has_listened: false,
   },
   {
     id: 28,
@@ -203,21 +211,8 @@ const itemsMock = [
     title: "Album 29",
     artist: "Artist 29",
     image: "https://picsum.photos/seed/29/200/200",
-    has_listened: false,
-  },
-  {
-    id: 30,
-    title: "Album 30",
-    artist: "Artist 30",
-    image: "https://picsum.photos/seed/30/200/200",
     has_listened: true,
-  },
-  {
-    id: 31,
-    title: "Album 31",
-    artist: "Artist 31",
-    image: "https://picsum.photos/seed/31/200/200",
-    has_listened: false,
+    has_liked: true,
   },
 ];
 
@@ -226,7 +221,7 @@ const AlbumStamps = () => {
     <div className="grid md:grid-cols-5 lg:grid-cols-7 grid-cols-2 gap-6 w-full">
       {itemsMock.map((item) => {
         return item.has_listened ? (
-          <Stamp key={item.id}>
+          <Stamp key={item.id} hasLiked={item.has_liked}>
             <Image
               width={200}
               height={200}
