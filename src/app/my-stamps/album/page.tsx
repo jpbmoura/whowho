@@ -1,3 +1,8 @@
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import Stamp from "@/components/ui/stamp";
 import Image from "next/image";
 
@@ -221,35 +226,44 @@ const AlbumStamps = () => {
     <div className="grid md:grid-cols-5 lg:grid-cols-7 grid-cols-2 gap-6 w-full">
       {itemsMock.map((item) => {
         return item.has_listened ? (
-          <Stamp key={item.id} hasLiked={item.has_liked}>
-            <Image
-              width={200}
-              height={200}
-              src={item.image}
-              alt={`Stamp ${item.id}`}
-            />
-            <div className="flex flex-col mt-2">
-              <h4 className="text-xs font-bold">{item.title}</h4>
-              <span className="text-xs">{item.artist}</span>
-            </div>
-          </Stamp>
+          <Popover key={item.id}>
+            <PopoverTrigger>
+              <Stamp>
+                <Image
+                  width={200}
+                  height={200}
+                  src={item.image}
+                  alt={`Stamp ${item.id}`}
+                />
+              </Stamp>
+            </PopoverTrigger>
+            <PopoverContent>
+              <div className="flex flex-col gap-2">
+                <h3 className="text-lg font-bold">{item.title}</h3>
+                <p className="text-sm">{item.artist}</p>
+              </div>
+            </PopoverContent>
+          </Popover>
         ) : (
-          <div
-            key={item.id}
-            className="p-2 w-fit border border-dashed border-black"
-          >
-            <Image
-              className="size-[118px] md:size-[200] grayscale"
-              width={200}
-              height={200}
-              src={item.image}
-              alt={`Stamp ${item.id}`}
-            />
-            <div className="flex flex-col mt-2">
-              <h4 className="text-xs font-bold">{item.title}</h4>
-              <span className="text-xs">{item.artist}</span>
-            </div>
-          </div>
+          <Popover key={item.id}>
+            <PopoverTrigger>
+              <div key={item.id} className="p-4 w-fit ">
+                <Image
+                  className="size-[118px] grayscale"
+                  width={118}
+                  height={118}
+                  src={item.image}
+                  alt={`Stamp ${item.id}`}
+                />
+              </div>
+            </PopoverTrigger>
+            <PopoverContent>
+              <div className="flex flex-col gap-2">
+                <h3 className="text-lg font-bold">{item.title}</h3>
+                <p className="text-sm">{item.artist}</p>
+              </div>
+            </PopoverContent>
+          </Popover>
         );
       })}
     </div>
