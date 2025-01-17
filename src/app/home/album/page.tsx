@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 
+import { LoaderPinwheel } from "lucide-react";
 import { LiaExternalLinkAltSolid } from "react-icons/lia";
 import { AiOutlineCaretDown } from "react-icons/ai";
 import { usePlayerStore } from "@/store/usePlayerStore";
@@ -44,7 +45,11 @@ const Album = () => {
   }, [videoId]);
 
   if (!todaysAlbum) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex justify-center pt-16">
+        <LoaderPinwheel className="animate-spin" />
+      </div>
+    );
   }
 
   return (
