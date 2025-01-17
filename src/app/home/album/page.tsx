@@ -5,7 +5,6 @@ import Image from "next/image";
 import mockImage from "@/assets/images/mock/bobdylan.png";
 import { LiaExternalLinkAltSolid } from "react-icons/lia";
 import { AiOutlineCaretDown } from "react-icons/ai";
-import YoutubeIframe from "@/components/ui/youtube-iframe";
 import { usePlayerStore } from "@/store/usePlayerStore";
 import { useEffect } from "react";
 
@@ -18,8 +17,6 @@ const albumOfTheDayMock = {
   subgenre: "Folk",
   label: "Columbia",
   description: `"The Freewheelin' Bob Dylan," released in 1963, is Bob Dylan's second studio album and a landmark in the folk music genre. Featuring a blend of original compositions and traditional folk songs, the album showcases Dylan's poetic lyricism and distinctive voice. It includes iconic tracks such as "Blowin' in the Wind" and "Girl from the North Country," which address social issues and personal introspection. The album's raw, acoustic sound and powerful storytelling helped to redefine the boundaries of popular music, establishing Dylan as a leading figure in the folk revival and influencing countless artists in the years to come.`,
-  spotifyUrl:
-    "https://open.spotify.com/album/3GmwKB1tgPZgXeRJZSm9WX?si=SG9Q-hr8RiaFl_dbZk3wlQ",
   wikipediaUrl: "https://en.wikipedia.org/wiki/The_Freewheelin%27_Bob_Dylan",
 };
 
@@ -103,12 +100,12 @@ const Album = () => {
 
             <span className="space-x-2">
               <a
-                href={albumOfTheDayMock.spotifyUrl}
+                href={`https://www.youtube.com/watch?v=${videoId}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline hover:font-bold hover:text-indigo-700"
               >
-                Spotify
+                Youtube
               </a>
 
               <a
@@ -123,7 +120,6 @@ const Album = () => {
           </div>
         </div>
       </div>
-      <YoutubeIframe />
     </div>
   );
 };
