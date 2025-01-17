@@ -2,26 +2,16 @@
 
 import Image from "next/image";
 
-import mockImage from "@/assets/images/mock/bobdylan.png";
 import { LiaExternalLinkAltSolid } from "react-icons/lia";
 import { AiOutlineCaretDown } from "react-icons/ai";
 import { usePlayerStore } from "@/store/usePlayerStore";
-import { useEffect } from "react";
-
-const albumOfTheDayMock = {
-  title: "The Freewheelin' Bob Dylan",
-  artist: "Bob Dylan",
-  albumCover: mockImage,
-  released: "1964",
-  genre: "Folk",
-  subgenre: "Folk",
-  label: "Columbia",
-  description: `"The Freewheelin' Bob Dylan," released in 1963, is Bob Dylan's second studio album and a landmark in the folk music genre. Featuring a blend of original compositions and traditional folk songs, the album showcases Dylan's poetic lyricism and distinctive voice. It includes iconic tracks such as "Blowin' in the Wind" and "Girl from the North Country," which address social issues and personal introspection. The album's raw, acoustic sound and powerful storytelling helped to redefine the boundaries of popular music, establishing Dylan as a leading figure in the folk revival and influencing countless artists in the years to come.`,
-  wikipediaUrl: "https://en.wikipedia.org/wiki/The_Freewheelin%27_Bob_Dylan",
-};
+import { useEffect, useState } from "react";
+import { getTodayAlbum } from "@/services/album-service";
+import type { Album } from "@/interfaces/album";
 
 const Album = () => {
   const { setVideoId, videoId } = usePlayerStore();
+  const [todaysAlbum, setTodaysAlbum] = useState<Album>();
 
   const searchAlbum = async (albumName: string) => {
     try {
@@ -38,11 +28,24 @@ const Album = () => {
     }
   };
 
+  const handleGetTodayAlbum = async () => {
+    const data = await getTodayAlbum();
+    setTodaysAlbum(data);
+  };
+
   useEffect(() => {
-    searchAlbum(`${albumOfTheDayMock.title}+${albumOfTheDayMock.artist}`);
+    handleGetTodayAlbum();
+  }, []);
+
+  useEffect(() => {
+    searchAlbum(`${todaysAlbum?.title}+${todaysAlbum?.artist}`);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [videoId]);
+
+  if (!todaysAlbum) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="flex flex-col w-full items-center justify-center">
@@ -65,38 +68,36 @@ const Album = () => {
 
       <div className="flex m-auto flex-col items-center gap-4 max-w-2xl border border-black py-4 px-6 shadow-blocked dark:border-zinc-800 bg-white mb-12">
         <h3 className="font-bold text-xl text-center">
-          {albumOfTheDayMock.artist} - {albumOfTheDayMock.title}
+          {todaysAlbum.artist} - {todaysAlbum.title}
         </h3>
         <div className="flex md:flex-row flex-col gap-8">
           <div className="space-y-4 w-1/2 m-auto md:m-0">
             <Image
-              src={albumOfTheDayMock.albumCover}
-              alt={albumOfTheDayMock.title}
-              width={200}
-              height={200}
+              src={todaysAlbum.albumCover}
+              alt={todaysAlbum.title}
+              width={400}
+              height={400}
               className="shadow-blocked"
             />
             <div>
               <p>
-                <strong>Released:</strong> {albumOfTheDayMock.released}
+                <strong>Released:</strong> {todaysAlbum.released}
               </p>
 
               <p>
-                <strong>Genre:</strong> {albumOfTheDayMock.genre}
+                <strong>Genre:</strong> {todaysAlbum.genre}
               </p>
               <p>
-                <strong>Subgenre:</strong> {albumOfTheDayMock.subgenre}
+                <strong>Subgenre:</strong> {todaysAlbum.subgenre}
               </p>
               <p>
-                <strong>Label:</strong> {albumOfTheDayMock.label}
+                <strong>Label:</strong> {todaysAlbum.label}
               </p>
             </div>
           </div>
 
           <div className="w-full flex flex-col justify-between items-end">
-            <p className="text-justify text-sm">
-              {albumOfTheDayMock.description}
-            </p>
+            <p className="text-justify text-sm">{todaysAlbum.description}</p>
 
             <span className="space-x-2">
               <a
@@ -109,7 +110,7 @@ const Album = () => {
               </a>
 
               <a
-                href={albumOfTheDayMock.wikipediaUrl}
+                href={todaysAlbum.wikipediaUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline hover:font-bold hover:text-indigo-700"
