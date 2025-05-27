@@ -9,12 +9,20 @@
   font-style: normal;
 }
 
-body {
+/* body {
   background: rgb(255, 255, 255);
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.02' numOctaves='8' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+} */
+
+b {
+  font-weight: 700;
 }
 
-.stamp {
+.home-banner {
+  background-image: url("/images/gradient-1.svg");
+}
+
+/* .stamp {
   --r: 6px;
   aspect-ratio: 2.5;
   padding: calc(2 * var(--r));
@@ -42,4 +50,4 @@ body {
   border-radius: 999999px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
   pointer-events: none;
-}
+} */

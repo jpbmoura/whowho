@@ -8,7 +8,7 @@ export default function Root() {
   const session = useSession();
 
   if (session.isSignedIn) {
-    redirect("/home/album");
+    redirect("/home");
   }
 
   return (
