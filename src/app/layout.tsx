@@ -1,4 +1,3 @@
-import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
@@ -9,8 +8,9 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "WhoWho",
-  description: "alpha.who-who.dev",
+  title: "WhoWho - Discover the Classics",
+  description:
+    "Your guide to timeless culture - albums, movies, and cultural treasures that have shaped our world",
 };
 
 export default function RootLayout({
@@ -19,10 +19,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body className={`${poppins.className} antialiased`}>{children}</body>
-      </html>
-    </ClerkProvider>
+    <html lang="en">
+      <body className={`${poppins.className} antialiased text-vintage-950`}>
+        {children}
+      </body>
+    </html>
   );
 }

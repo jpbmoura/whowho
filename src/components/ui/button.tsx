@@ -5,29 +5,29 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-950 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 dark:focus-visible:ring-zinc-300",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fox-600 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border-2 font-bold tracking-wide",
   {
     variants: {
       variant: {
         primary:
-          "bg-fox-500 text-fox-50 shadow hover:bg-fox-500/90 dark:bg-fox-50 dark:text-fox-900 dark:hover:bg-fox-50/90",
+          "bg-fox-600 text-vintage-50 border-fox-700 shadow-vintage hover:bg-fox-700 hover:shadow-paper hover:transform hover:-translate-y-0.5 active:transform active:translate-y-0 active:shadow-vintage",
         default:
-          "bg-zinc-900 text-zinc-50 shadow hover:bg-zinc-900/90 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-50/90",
+          "bg-vintage-600 text-vintage-50 border-vintage-700 shadow-vintage hover:bg-vintage-700 hover:shadow-paper hover:transform hover:-translate-y-0.5 active:transform active:translate-y-0 active:shadow-vintage",
         destructive:
-          "bg-red-500 text-zinc-50 shadow-sm hover:bg-red-500/90 dark:bg-red-900 dark:text-zinc-50 dark:hover:bg-red-900/90",
+          "bg-mushroom-500 text-vintage-50 border-mushroom-600 shadow-vintage hover:bg-mushroom-600 hover:shadow-paper hover:transform hover:-translate-y-0.5",
         outline:
-          "border border-zinc-200 bg-white shadow-sm hover:bg-zinc-100 hover:text-zinc-900 dark:border-zinc-800 dark:bg-zinc-950 dark:hover:bg-zinc-800 dark:hover:text-zinc-50",
+          "border-vintage-600 bg-vintage-50 text-vintage-800 shadow-vintage hover:bg-vintage-100 hover:border-vintage-700 hover:shadow-paper hover:transform hover:-translate-y-0.5",
         secondary:
-          "bg-zinc-100 text-zinc-900 shadow-sm hover:bg-zinc-100/80 dark:bg-zinc-800 dark:text-zinc-50 dark:hover:bg-zinc-800/80",
+          "bg-vintage-200 text-vintage-900 border-vintage-400 shadow-vintage hover:bg-vintage-300 hover:border-vintage-500 hover:shadow-paper hover:transform hover:-translate-y-0.5",
         ghost:
-          "hover:bg-zinc-100 hover:text-zinc-900 dark:hover:bg-zinc-800 dark:hover:text-zinc-50",
-        link: "text-zinc-900 underline-offset-4 hover:underline dark:text-zinc-50",
+          "border-transparent bg-transparent text-vintage-800 hover:bg-vintage-100 hover:border-vintage-300 hover:text-vintage-900",
+        link: "border-transparent bg-transparent text-fox-700 underline-offset-4 hover:underline hover:text-fox-800",
       },
       size: {
-        default: "h-9 px-4 py-2",
-        sm: "h-8 px-3 text-xs",
-        lg: "h-10 px-8",
-        icon: "h-9 w-9",
+        default: "h-10 px-6 py-2 text-sm",
+        sm: "h-8 px-4 text-xs",
+        lg: "h-12 px-8 text-base",
+        icon: "h-10 w-10",
       },
     },
     defaultVariants: {
