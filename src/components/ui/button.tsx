@@ -5,23 +5,22 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fox-600 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border-2 font-bold tracking-wide",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 rounded-lg font-semibold",
   {
     variants: {
       variant: {
         primary:
-          "bg-fox-600 text-vintage-50 border-fox-700 shadow-vintage hover:bg-fox-700 hover:shadow-paper hover:transform hover:-translate-y-0.5 active:transform active:translate-y-0 active:shadow-vintage",
+          "bg-blue-600 text-white shadow-lg hover:bg-blue-700 hover:shadow-xl hover:scale-105 active:scale-95",
         default:
-          "bg-vintage-600 text-vintage-50 border-vintage-700 shadow-vintage hover:bg-vintage-700 hover:shadow-paper hover:transform hover:-translate-y-0.5 active:transform active:translate-y-0 active:shadow-vintage",
+          "bg-white text-gray-700 border border-gray-300 shadow-sm hover:bg-gray-50 hover:shadow-md hover:scale-105 active:scale-95",
         destructive:
-          "bg-mushroom-500 text-vintage-50 border-mushroom-600 shadow-vintage hover:bg-mushroom-600 hover:shadow-paper hover:transform hover:-translate-y-0.5",
+          "bg-red-500 text-white shadow-lg hover:bg-red-600 hover:shadow-xl hover:scale-105 active:scale-95",
         outline:
-          "border-vintage-600 bg-vintage-50 text-vintage-800 shadow-vintage hover:bg-vintage-100 hover:border-vintage-700 hover:shadow-paper hover:transform hover:-translate-y-0.5",
+          "border-2 border-gray-300 bg-transparent text-gray-700 hover:bg-gray-50 hover:border-gray-400 hover:scale-105 active:scale-95",
         secondary:
-          "bg-vintage-200 text-vintage-900 border-vintage-400 shadow-vintage hover:bg-vintage-300 hover:border-vintage-500 hover:shadow-paper hover:transform hover:-translate-y-0.5",
-        ghost:
-          "border-transparent bg-transparent text-vintage-800 hover:bg-vintage-100 hover:border-vintage-300 hover:text-vintage-900",
-        link: "border-transparent bg-transparent text-fox-700 underline-offset-4 hover:underline hover:text-fox-800",
+          "bg-gray-100 text-gray-900 hover:bg-gray-200 hover:shadow-md hover:scale-105 active:scale-95",
+        ghost: "text-gray-700 hover:bg-gray-100 hover:text-gray-900 rounded-md",
+        link: "text-blue-600 underline-offset-4 hover:underline hover:text-blue-700",
       },
       size: {
         default: "h-10 px-6 py-2 text-sm",

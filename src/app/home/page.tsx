@@ -6,70 +6,81 @@ import { useRouter } from "next/navigation";
 const Home = () => {
   const router = useRouter();
   return (
-    <div>
-      <div className="w-full bg-vintage-50 border-b-4 border-vintage-700">
-        <div className="max-w-6xl mx-auto flex flex-col justify-center items-center md:py-16 py-8 px-4">
-          <div className="text-center mb-8">
-            <div className="inline-block border-2 border-vintage-800 bg-vintage-100 p-6 shadow-vintage">
-              <h2 className="md:text-5xl text-2xl font-koulen text-vintage-950 tracking-wide mb-3">
+    <div className="">
+      {/* Hero Section */}
+      <div className="overflow-hidden bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+          <div className="text-center">
+            {/* Main heading */}
+            <div className="mb-12">
+              <h2 className="text-4xl md:text-7xl font-koulen text-gray-900 tracking-wide mb-6">
                 DISCOVER THE CLASSICS
               </h2>
-              <div className="h-px bg-vintage-700 my-3"></div>
-              <p className="md:text-xl text-sm vintage-text text-vintage-800 font-medium tracking-wide">
+              <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto rounded-full mb-6"></div>
+              <p className="text-lg md:text-xl modern-text text-gray-600 font-medium">
                 Est. 2024 • Your Guide to Timeless Culture
               </p>
             </div>
-          </div>
 
-          <div className="flex flex-col gap-4 text-center max-w-4xl">
-            <h3 className="md:text-3xl text-lg vintage-text text-vintage-950 font-bold">
-              1001<span className="text-fox-700">+</span> Cultural Treasures
-            </h3>
-            <p className="max-w-[700px] mx-auto vintage-text md:text-lg text-sm leading-relaxed text-vintage-800">
-              Uncover timeless <strong className="text-fox-700">albums</strong>,
-              must-watch <strong className="text-fox-700">movies</strong>, and
-              unforgettable <strong className="text-fox-700">moments</strong>{" "}
-              that will redefine your cultural journey.
-            </p>
-          </div>
+            {/* Description */}
+            <div className="max-w-4xl mx-auto mb-16">
+              <h3 className="text-2xl md:text-4xl font-semibold text-gray-900 mb-6">
+                1001<span className="gradient-text">+</span> Cultural Treasures
+              </h3>
+              <p className="text-lg md:text-xl modern-text text-gray-600 leading-relaxed">
+                Uncover timeless{" "}
+                <strong className="text-blue-600">albums</strong>, must-watch{" "}
+                <strong className="text-purple-600">movies</strong>, and
+                unforgettable{" "}
+                <strong className="text-indigo-600">moments</strong> that will
+                redefine your cultural journey.
+              </p>
+            </div>
 
-          <div className="flex md:flex-row flex-col gap-6 md:gap-12 md:mt-16 mt-10">
-            <Button
-              onClick={() => router.push("/home/album")}
-              size="lg"
-              variant="primary"
-              className="text-xl md:text-2xl px-12 py-6 h-auto font-koulen tracking-wider border-3 border-fox-800 shadow-vintage hover:shadow-paper transition-all"
-            >
-              Album of the Day
-            </Button>
-            <Button
-              size="lg"
-              variant="secondary"
-              className="text-xl md:text-2xl px-12 py-6 h-auto font-koulen tracking-wider border-3 border-panda-500 shadow-vintage opacity-60"
-              disabled
-            >
-              Movie of the Day
-            </Button>
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+              <Button
+                onClick={() => router.push("/home/album")}
+                size="lg"
+                variant="primary"
+                className="text-xl md:text-2xl px-12 py-6 h-auto font-koulen tracking-wider font-normal"
+              >
+                Album of the Day
+              </Button>
+              <Button
+                size="lg"
+                variant="secondary"
+                className="text-xl md:text-2xl px-12 py-6 h-auto font-koulen tracking-wider opacity-60 font-normal"
+                disabled
+              >
+                Movie of the Day
+              </Button>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className=" mx-auto flex justify-center fixed bottom-0 w-full mb-4">
-        <p className="text-center vintage-text text-vintage-700 text-sm">
-          Built with{" "}
-          <span role="img" aria-label="heart" className="text-fox-600">
-            ❤️
-          </span>{" "}
-          by{" "}
-          <a
-            href="https://jotape.me/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline hover:font-bold hover:text-fox-700 transition-colors"
-          >
-            JP
-          </a>
-        </p>
+      {/* Footer */}
+      <div className="fixed bottom-0 w-full mb-4">
+        <div className="flex justify-center">
+          <div className="glass rounded-full px-6 py-3">
+            <p className="text-center modern-text text-gray-600 text-sm">
+              Built with{" "}
+              <span role="img" aria-label="heart" className="text-red-500">
+                ❤️
+              </span>{" "}
+              by{" "}
+              <a
+                href="https://jotape.me/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:text-blue-700 transition-colors font-medium"
+              >
+                JP
+              </a>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );
